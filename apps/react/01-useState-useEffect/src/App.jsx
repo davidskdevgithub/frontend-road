@@ -1,10 +1,14 @@
-import { CourseCard } from 'ui-react'
+import { useState } from 'react'
+import cursesWithResults from './mocks/courses-with-results.json'
+import { CourseList } from 'ui-react'
+import './App.css'
 
 export default function App () {
+  const [courses, setCourses] = useState(cursesWithResults)
   return (
-    <div>
+    <div className='app-container'>
       <h1>useState + useEffect</h1>
-      <CourseCard />
+      <CourseList courses={courses} />
     </div>
   )
 }
