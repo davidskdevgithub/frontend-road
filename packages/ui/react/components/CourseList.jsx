@@ -6,14 +6,18 @@ export function CourseList ({ courses }) {
     <div className='course-list'>
       {
         courses.map(course => {
-          const { id, nombre, imgUrl, fechaInscrpcion, horasSemanales } = course
-          const src = `/assets/img/${imgUrl}.png`
+          const { id, collectionId, nombre, image, fechaInscrpcionDesde, fechaInscrpcionHasta, horasSemanales } = course
+          const src = `http://127.0.0.1:8090/api/files/${collectionId}/${id}/${image}`
+          const fechaInscrpcion = {
+            empieza: fechaInscrpcionDesde,
+            termina: fechaInscrpcionHasta
+          }
           return (
             <CourseCard
               key={id}
               title={nombre}
               src={src}
-              fechaInscrpcion={fechaInscrpcion[0]}
+              fechaInscrpcion={fechaInscrpcion}
               horasSemanales={horasSemanales}
             />
           )
