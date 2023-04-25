@@ -1,9 +1,10 @@
 import PocketBase from 'pocketbase'
 
-const pb = new PocketBase('http://127.0.0.1:8090')
+const PB_URI = 'http://127.0.0.1:8090'
+const PB = new PocketBase(PB_URI)
 
 export const getCourses = async () => {
-  const courses = await pb.collection('courses').getFullList({
+  const courses = await PB.collection('courses').getFullList({
     sort: '-created'
   })
   console.log({ courses })

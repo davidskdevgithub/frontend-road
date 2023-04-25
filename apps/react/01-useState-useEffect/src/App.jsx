@@ -1,14 +1,11 @@
-import { useState, useEffect } from 'react'
-import { getCourses } from './services/courses'
+import { useCourses } from './hooks/useCourses'
 
 import { CourseList } from 'ui-react'
 import './App.css'
 
 export default function App () {
-  const [courses, setCourses] = useState([])
-  useEffect(() => {
-    getCourses().then(coursesAPI => setCourses(coursesAPI))
-  }, [])
+  const { courses } = useCourses()
+
   return (
     <div className='app-container'>
       <h1>useState + useEffect</h1>
